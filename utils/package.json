@@ -1,0 +1,28 @@
+{
+    "name": "utils",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "lint": "eslint . --ext .ts",
+        "typecheck": "tsc -b",
+        "test": "vitest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@testing-library/dom": "^9.2.0",
+        "@types/jest": "^29.5.1",
+        "@typescript-eslint/eslint-plugin": "^5.59.2",
+        "@typescript-eslint/parser": "^5.59.2",
+        "eslint": "^8.39.0",
+        "eslint-config-prettier": "^8.8.0",
+        "jsdom": "^22.0.0",
+        "prettier": "^2.8.8",
+        "typescript": "^5.0.4",
+        "vite": "^4.3.4",
+        "vitest": "^0.30.1"
+    }
+}
