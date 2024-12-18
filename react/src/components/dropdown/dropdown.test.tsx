@@ -42,9 +42,15 @@ const setup = (
 beforeEach(() => vi.resetAllMocks());
 
 it('throws error if subcomponents are used outside of the provider', () => {
+    const consoleErrorMock = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
+
     expect(() =>
         render(<Dropdown.Trigger>Trigger</Dropdown.Trigger>)
     ).toThrowError('useDropdownContext was used outside of its Provider');
+
+    consoleErrorMock.mockRestore();
 });
 
 it('renders the components with the correct roles', async () => {
