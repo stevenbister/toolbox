@@ -1,4 +1,4 @@
-import { defineConfig, mergeConfig } from 'vitest/config';
+import { configDefaults, defineConfig, mergeConfig } from 'vitest/config';
 import viteConfig from './vite.config.ts';
 
 export default mergeConfig(
@@ -9,6 +9,12 @@ export default mergeConfig(
             globals: true,
             environment: 'jsdom',
             setupFiles: ['./setup-tests.ts'],
+            coverage: {
+                exclude: [
+                    ...configDefaults.coverage.exclude!,
+                    './src/**/*.stories.{ts,tsx}',
+                ],
+            },
         },
     })
 );
