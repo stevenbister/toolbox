@@ -1,7 +1,6 @@
 // https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions/
 import {
     createContext,
-    useCallback,
     useContext,
     useEffect,
     useId,
@@ -14,6 +13,7 @@ import {
     type SyntheticEvent,
 } from 'react';
 import { useClickOutside } from '../../hooks/use-click-outside/use-click-outside';
+import { useRegisterComponent } from '../../hooks/use-register-component/use-register-component';
 
 type Arrows = 'ArrowUp' | 'ArrowDown';
 
@@ -72,13 +72,7 @@ export const Dropdown = ({
     const [lastArrowPressed, setLastArrowPressed] =
         useState<DropdownContextParams['lastArrowPressed']>(undefined);
 
-    const registerItem = useCallback((item: HTMLLIElement) => {
-        setItems((prev) => (prev.includes(item) ? prev : [...prev, item]));
-    }, []);
-
-    const unregisterItem = useCallback((id: string) => {
-        setItems((prev) => prev.filter((item) => item.id !== id));
-    }, []);
+    const { registerItem, unregisterItem } = useRegisterComponent(setItems);
 
     const handleOpenChange = <T extends SyntheticEvent | Event>(e: T) => {
         e.preventDefault();
