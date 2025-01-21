@@ -1,5 +1,3 @@
-import type { Maybe } from '../../../types/maybe';
-
 /**
  * Joins a list of classes together, filtering out the falsy values
  *
@@ -7,7 +5,7 @@ import type { Maybe } from '../../../types/maybe';
  * @returns A string of classNames
  * @example classNames('foo', 'bar', 'baz')
  */
-export const classList = (...classes: Maybe<string>[]) =>
+export const classList = (...classes: (string | undefined | null)[]) =>
     classes
         .filter((className) => className)
         .join(' ')
