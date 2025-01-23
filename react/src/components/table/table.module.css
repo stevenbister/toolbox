@@ -1,0 +1,73 @@
+.container {
+    --table-header-bg: whitesmoke;
+    --table-body-bg: white;
+    --table-cell-border: 1px solid lightgrey;
+
+    overflow: scroll;
+}
+
+.caption {
+    margin-block: 0.75rem;
+}
+
+.table {
+    border-collapse: collapse;
+    width: max(65rem, 100%);
+    table-layout: fixed;
+}
+
+.th,
+.caption {
+    text-align: start;
+}
+
+.thead {
+    border-block-end: 2px solid;
+    background: var(--table-header-bg);
+}
+
+.tfoot {
+    border-block: 2px solid;
+    background-color: var(--table-header-bg);
+}
+
+.tbody .th {
+    background-color: var(--table-body-bg);
+}
+
+.thead .th,
+.tfoot .th {
+    background-color: var(--table-header-bg);
+}
+
+.thead .th {
+    vertical-align: bottom;
+}
+
+.th,
+.td {
+    border: var(--table-cell-border);
+    padding: 0.25rem 0.75rem;
+    vertical-align: baseline;
+}
+
+.td:first-of-type,
+:where(.thead, .tfoot) .th:nth-child(2) {
+    border-inline-start: none;
+}
+
+.th {
+    &:first-child::after {
+        content: '';
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        width: 1px;
+        height: 100%;
+        background-color: lightgrey;
+    }
+
+    &:first-of-type {
+        width: 10rem;
+    }
+}
